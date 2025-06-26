@@ -7,10 +7,11 @@
   "type": "commonjs",
   "main": "index.js",
 "scripts": {
-  "dev": "nodemon server.ts",
+  "dev": "nodemon src/server.ts",
   "build": "tsc",
-  "start:prod": "node dist/main"
+  "start:prod": "node dist/server.js"
 },
+
 
   "dependencies": {
     "bcryptjs": "^3.0.2",
