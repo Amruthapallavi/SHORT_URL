@@ -9,7 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.ts",
-        "build": "tsc"
+        "build": "tsc",
+          "start:prod": "node dist/main"
+
 
   },
   "dependencies": {
