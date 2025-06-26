@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { LinkIcon } from "lucide-react";
+import { useAuth } from "../hook/useAuth";
 
 const Welcome = () => {
+  const { user } = useAuth();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#494E6B] via-[#3d4159] to-[#2a2d42] text-white flex items-center justify-center px-6 py-12">
       <div className="text-center max-w-xl sm:max-w-2xl">
@@ -20,18 +23,29 @@ const Welcome = () => {
         </p>
 
         <div className="flex justify-center gap-8 mb-14">
-          <Link
-            to="/signup"
-            className="bg-gradient-to-r from-[#494E6B] to-[#98878F] hover:from-[#3d4159] hover:to-[#847379] px-8 py-3 rounded-lg font-semibold text-white shadow-lg transition-transform transform hover:scale-105"
-          >
-            Sign Up
-          </Link>
-          <Link
-            to="/login"
-            className="border border-[#98878F] text-white hover:bg-[#98878F]/30 px-8 py-3 rounded-lg font-medium transition-shadow shadow-md hover:shadow-lg"
-          >
-            Log In
-          </Link>
+          {user ? (
+            <Link
+              to="/dashboard" // or wherever logged-in users go
+              className="bg-gradient-to-r from-[#494E6B] to-[#98878F] hover:from-[#3d4159] hover:to-[#847379] px-8 py-3 rounded-lg font-semibold text-white shadow-lg transition-transform transform hover:scale-105"
+            >
+              Continue with ShortLink
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/signup"
+                className="bg-gradient-to-r from-[#494E6B] to-[#98878F] hover:from-[#3d4159] hover:to-[#847379] px-8 py-3 rounded-lg font-semibold text-white shadow-lg transition-transform transform hover:scale-105"
+              >
+                Sign Up
+              </Link>
+              <Link
+                to="/login"
+                className="border border-[#98878F] text-white hover:bg-[#98878F]/30 px-8 py-3 rounded-lg font-medium transition-shadow shadow-md hover:shadow-lg"
+              >
+                Log In
+              </Link>
+            </>
+          )}
         </div>
 
         <div className="bg-black/30 backdrop-blur-md border border-[#98878F]/30 rounded-xl px-8 py-6 text-left text-sm sm:text-base leading-relaxed">

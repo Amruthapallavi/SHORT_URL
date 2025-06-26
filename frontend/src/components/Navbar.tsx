@@ -11,7 +11,7 @@ const Navbar = () => {
     try {
       await userService.logout();
       notifySuccess("Logged Out")
-      navigate("/login", { replace: true }); 
+      navigate("/", { replace: true }); 
     } catch (error) {
       console.error("Logout failed", error);
       notifyError("Logout Failed")
