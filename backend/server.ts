@@ -25,7 +25,7 @@ app.use('/r', redirectRouter);
 
 
 
-const PORT=5000;
+const PORT=process.env.PORT;
 app.listen(PORT,async()=>{
 
 console.log(`server is running on PORT ${PORT}`);
