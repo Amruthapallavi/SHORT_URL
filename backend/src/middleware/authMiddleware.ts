@@ -15,8 +15,6 @@ export const authenticateToken = (
   const authHeader = req.headers.authorization;
   const cookieToken = req.cookies?.token;
 
-  console.log("authHeader:", authHeader);
-  console.log("cookieToken:", cookieToken);
 
   const token = cookieToken || (authHeader && authHeader.split(" ")[1]);
 

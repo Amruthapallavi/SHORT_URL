@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import userRoutes from "./src/routes/userRoutes";
-import connectDB from "./src/config/db";
-import redirectRouter from "./src/routes/redirectRouter";
+import userRoutes from "./routes/userRoutes";
+import connectDB from "./config/db";
+import redirectRouter from "./routes/redirectRouter";
 dotenv.config();
 
 const app= express();

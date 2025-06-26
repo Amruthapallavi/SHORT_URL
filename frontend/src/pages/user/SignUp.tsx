@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Link as LinkIcon, Mail, Lock, User } from "lucide-react";
 import { userService } from "../../services/userServices";
 import { notifyError } from "../../utils/notify";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -81,6 +82,7 @@ const Register = () => {
     try {
       const user = await userService.signup(formData);
       console.log("User created:", user);
+    toast.success("Successfully Registered...Please login to continue !")
       navigate("/dashboard");
     } catch (error) {
       console.error("Signup failed:", error);
