@@ -189,6 +189,8 @@ const handleDelete = (id: string) => {
         />
 
         <div className="space-y-4">
+          {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+
           {displayedUrls.length === 0 && !loading && (
             <p className="text-[#98878F]/70 text-center mt-12">
               No shortened URLs yet. Add one above!
