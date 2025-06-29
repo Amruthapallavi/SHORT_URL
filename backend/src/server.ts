@@ -12,7 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const allowedOrigins = ['https://short-url-fawn-nu.vercel.app',
-'https://short-url-amrithas-projects-57839655.vercel.app'
+'https://short-url-amrithas-projects-57839655.vercel.app',
+'https://short-2eusxd586-amrithas-projects-57839655.vercel.app'
 ];
 
 app.use(cors({
