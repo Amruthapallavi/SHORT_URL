@@ -80,8 +80,9 @@ const Register = () => {
     setIsLoading(true);
 
     try {
-      const user = await userService.signup(formData);
-    toast.success("Successfully Registered...Please login to continue !")
+      await userService.signup(formData);
+
+      toast.success("Successfully Registered...Please login to continue !")
       navigate("/dashboard");
     } catch (error) {
       console.error("Signup failed:", error);
