@@ -18,12 +18,10 @@ export const userService = {
 
 getUrls: async (): Promise<ShortenedUrl[]> => {
   const response = await userApi.get("/urls");
-  console.log(response.data,"for getUrls")
   return response.data;
 },
 deleteUrl:async(id:string):Promise<void>=>{
 const response= await userApi.delete(`/url/${id}`);
-console.log(response.data);
 return response.data;
 },
  logout: async (): Promise<{}> => {

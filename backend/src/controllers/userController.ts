@@ -158,7 +158,6 @@ if (existingUrl) {
 static async redirect(req: Request, res: Response): Promise<void> {
     try {
       const { shortCode } = req.params;
-   console.log(shortCode,"code")
       const urlEntry = await urlModel.findOne({ shortCode });
 
       if (!urlEntry) {

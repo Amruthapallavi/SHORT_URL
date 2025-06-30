@@ -81,7 +81,6 @@ const Register = () => {
 
     try {
       const user = await userService.signup(formData);
-      console.log("User created:", user);
     toast.success("Successfully Registered...Please login to continue !")
       navigate("/dashboard");
     } catch (error) {

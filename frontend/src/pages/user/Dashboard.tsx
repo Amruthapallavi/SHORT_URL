@@ -75,7 +75,6 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const response = await userService.shorten(newUrl);
-      console.log(response, "for ri");
       const newEntry: UrlData = {
         id: response.data._id || Date.now().toString(),
         originalUrl: response.data.originalUrl,
