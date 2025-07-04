@@ -116,17 +116,20 @@ static async shorten(req: AuthRequest, res: Response): Promise<void> {
   try {
     const { originalUrl } = req.body;
     if (!originalUrl || !validator.isURL(originalUrl, { protocols: ["http", "https"], require_protocol: true })) {
-       res.status(STATUS_CODES.BAD_REQUEST).json({ message:MESSAGES.ERROR.NOT_VALID_URL });
+             throw new Error(MESSAGES.ERROR.NOT_VALID_URL);
+
     }
 
     const userId = req.user?.userId;
     if (!userId) {
-       res.status(STATUS_CODES.UNAUTHORIZED).json({ message: MESSAGES.ERROR.UNAUTHORIZED});
+             throw new Error(MESSAGES.ERROR.UNAUTHORIZED);
+
     }
     
   const existingUrl = await urlModel.findOne({ originalUrl, userId }); 
 if (existingUrl) {
-   res.status(STATUS_CODES.CONFLICT).json({ message:MESSAGES.ERROR.URL_ALREADY_EXISTS }); 
+         throw new Error(MESSAGES.ERROR.URL_ALREADY_EXISTS);
+ 
 }
 
     const shortCode = nanoid(6);
@@ -164,7 +167,9 @@ static async redirect(req: Request, res: Response): Promise<void> {
 
       if (!urlEntry) {
         res.status(STATUS_CODES.NOT_FOUND).json({ message:MESSAGES.ERROR.URL_NOT_FOUND});
+
         return;
+        
       }
 
       urlEntry.clicks = (urlEntry.clicks || 0) + 1;
