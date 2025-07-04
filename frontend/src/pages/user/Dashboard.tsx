@@ -76,7 +76,7 @@ const Dashboard = () => {
     try {
       const response = await userService.shorten(newUrl);
       const newEntry: UrlData = {
-        id: response.data._id || Date.now().toString(),
+        id: response.data.id || Date.now().toString(),
         originalUrl: response.data.originalUrl,
         shortUrl: response.data.shortUrl,
         clicks: 0,

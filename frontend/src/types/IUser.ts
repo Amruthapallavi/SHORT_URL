@@ -37,5 +37,11 @@ export interface UrlData {
   shortUrl: string;
   clicks: number;
   createdAt: string;
-  title: string;
+  title?: string;
+}
+
+
+export interface shortenURLApiResponse {
+  data: UrlData;
+  message: string;
 }

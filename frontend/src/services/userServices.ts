@@ -1,4 +1,4 @@
-import type { loginData, LoginResponse, ShortenedUrl, signUpData, SignupResponse } from "../types/IUser";
+import type { loginData, LoginResponse, ShortenedUrl, shortenURLApiResponse, signUpData, SignupResponse } from "../types/IUser";
 import userApi from "./api";
 
 export const userService = {
@@ -11,9 +11,8 @@ export const userService = {
     const response = await userApi.post("/login", loginData);
     return response.data; 
   },
-  shorten: async (originalUrl: string): Promise<any> => {
+  shorten: async (originalUrl: string): Promise<shortenURLApiResponse> => {
   const response = await userApi.post("/shorten", { originalUrl });
-  console.log(response,"for any");
   return response.data;
 },
 
