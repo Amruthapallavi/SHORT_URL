@@ -3,7 +3,7 @@ import { Copy, ExternalLink } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import { useAuth } from "../../hook/useAuth";
 import { userService } from "../../services/userServices";
-import type { UrlData } from "../../types/IUser";
+import type { ShortenedUrl, UrlData } from "../../types/IUser";
 import { toast, Toaster } from "react-hot-toast";
 import { notifyError, notifySuccess } from "../../utils/notify";
 import { confirmToast } from "../../components/confirmToast";
@@ -27,8 +27,8 @@ const Dashboard = () => {
   const handleOpen = async (url: string) => {
     window.open(url, "_blank", "noopener,noreferrer");
     try {
-      const data = await userService.getUrls();
-      const formatted = data.map((url: any) => ({
+      const data:ShortenedUrl[] = await userService.getUrls();
+      const formatted = data.map((url) => ({
         id: url._id,
         originalUrl: url.originalUrl,
         shortUrl: url.shortUrl,
@@ -46,8 +46,8 @@ const Dashboard = () => {
     const fetchUrls = async () => {
       setLoading(true);
       try {
-        const data = await userService.getUrls();
-        const formatted = data.map((url: any) => ({
+        const data:ShortenedUrl[] = await userService.getUrls();
+        const formatted = data.map((url) => ({
           id: url._id,
           originalUrl: url.originalUrl,
           shortUrl: url.shortUrl,

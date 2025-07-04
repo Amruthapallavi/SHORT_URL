@@ -1,3 +1,5 @@
+import { Request } from "express";
+
 export interface SignupInput {
   name: string;
   email: string;
@@ -7,4 +9,11 @@ export interface SignupInput {
 export interface LoginInput {
     email:string;
     password:string;
+}
+
+
+export interface RequestWithUser extends Request {
+  user?: {
+    userId: string;
+  };
 }

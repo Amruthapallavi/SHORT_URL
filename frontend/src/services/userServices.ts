@@ -13,6 +13,7 @@ export const userService = {
   },
   shorten: async (originalUrl: string): Promise<any> => {
   const response = await userApi.post("/shorten", { originalUrl });
+  console.log(response,"for any");
   return response.data;
 },
 

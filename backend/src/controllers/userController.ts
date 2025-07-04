@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/userModel";
-import { LoginInput, SignupInput } from "../types/IUser";
+import { LoginInput, RequestWithUser, SignupInput } from "../types/IUser";
 import { nanoid } from "nanoid";
 import urlModel from "../models/urlModel";
 dotenv.config();
@@ -96,8 +96,9 @@ class UserController {
 static async getUrls(req: Request, res: Response): Promise<void> {
     try {
       
-const userId = (req as any).user?.userId;
-      if (!userId) {
+const reqWithUser = req as RequestWithUser;
+    const userId = reqWithUser.user?.userId;   
+       if (!userId) {
         res.status(401).json({ message: "Unauthorized. User ID missing." });
         return;
       }
@@ -178,8 +179,8 @@ static async redirect(req: Request, res: Response): Promise<void> {
   static async deleteUrl(req: Request, res: Response): Promise<void> {
     try {
       const { id } = req.params;
-const userId = (req as any).user?.userId;
-
+const reqWithUser = req as RequestWithUser;
+    const userId = reqWithUser.user?.userId;
       if (!userId) {
         res.status(401).json({ message: "Unauthorized" });
         return;
